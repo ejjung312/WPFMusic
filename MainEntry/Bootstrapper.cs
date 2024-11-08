@@ -20,6 +20,8 @@ public class Bootstrapper
 
         // Services
         services.AddSingleton<IDialogService, DialogService>();
+        services.AddSingleton<ISettingService, SettingService>();
+        services.AddSingleton<IBassService, BassService>();
 
         // ViewModels
         // AddTransient: 요청할 때마다 새로운 인스턴스 생성
@@ -27,6 +29,7 @@ public class Bootstrapper
         services.AddTransient<MainViewModel>();
 
         services.AddTransient<AlbumArtInfoViewModel>();
+        services.AddTransient<ControlPanelViewModel>();
 
         return services.BuildServiceProvider();
     }

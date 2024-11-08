@@ -11,4 +11,10 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="LogHelper">
+      <HintPath>..\Lib\LogHelper\LogHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -2,6 +2,7 @@
     x:Class="Views.UI.ControlPanelUI"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:controls="clr-namespace:Common.Controls;assembly=Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Views.UI"
@@ -61,6 +62,117 @@
                     PeakFallDelay="10"
                     RegisterSoundPlayer="{Binding RegisterSoundPlayer, Mode=OneTime}" />
             </Viewbox>
+
+            <Border Grid.Row="1" Grid.Column="0">
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                        <behaviors:InvokeCommandAction Command="{Binding ReadyCangeChannelPostionCommand}" />
+                    </behaviors:EventTrigger>
+                    <behaviors:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                        <behaviors:InvokeCommandAction Command="{Binding UpdateChannelPostionCommand}" CommandParameter="{Binding ElementName=xChannelSlider, Path=Value}" />
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+                <Slider
+                    x:Name="xChannelSlider"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    IsMoveToPointEnabled="True"
+                    Maximum="{Binding PlayInfoModel.ChannelLength}"
+                    Style="{StaticResource sRepeatSlider}"
+                    Value="{Binding PlayInfoModel.ChannelPosition, Mode=OneWay}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="ValueChanged">
+                            <behaviors:InvokeCommandAction Command="{Binding ChangingChannelPostionCommand}" CommandParameter="{Binding ElementName=xChannelSlider, Path=Value}" />
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </Slider>
+            </Border>
+
+            <Viewbox
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="23"
+                Height="23"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
+                <Border VerticalAlignment="Center">
+                    <Path Data="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z" Fill="#FFFFFFFF" />
+                </Border>
+            </Viewbox>
+
+            <Slider
+                x:Name="xVolumeSlider"
+                Grid.Row="1"
+                Grid.Column="2"
+                Width="70"
+                Margin="10,0,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                IsMoveToPointEnabled="True"
+                Maximum="1"
+                Style="{StaticResource sSmallRepeatSlider}"
+                Value="{Binding VolumePosition}" />
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                FontSize="13"
+                Foreground="#FFFFFFFF"
+                Text="{Binding PlayInfoModel.ElapsedTime, StringFormat=mm:ss, ConverterCulture='ko-KR'}">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource xNanumSquareFont}" TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Hidden" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding PlayInfoModel.IsPlaying}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding PlayInfoModel.CanPlay}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                FontSize="13"
+                Foreground="#FFFFFFFF"
+                Text="{Binding PlayInfoModel.TotalTime, StringFormat=mm:ss, ConverterCulture='ko-KR'}">
+                <TextBlock.Style>
+                    <Style BasedOn="{StaticResource xNanumSquareFont}" TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Hidden" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding PlayInfoModel.IsPlaying}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding PlayInfoModel.CanPlay}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
         </Grid>
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            Orientation="Horizontal">
+            <Button
+                x:Name="xOpenBtn"
+                Width="25"
+                Height="20"
+                Margin="0,0,15,0"
+                Click="xOpenBtn_Click"
+                Command="{Binding FileOpenCommand}"
+                CommandParameter="{Binding ElementName=xOpenBtn, Path=Tag}"
+                Style="{StaticResource sButton_Open}" />
+        </StackPanel>
     </Grid>
 </UserControl>

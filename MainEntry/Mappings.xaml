@@ -4,11 +4,18 @@
     xmlns:dataContext="clr-namespace:ViewModels;assembly=ViewModels"
     xmlns:views="clr-namespace:Views.UI;assembly=Views">
 
+    <!--  메인 뷰  -->
     <DataTemplate DataType="{x:Type dataContext:MainViewModel}">
         <views:MainUI />
     </DataTemplate>
 
+    <!--  앨범정보 뷰  -->
     <DataTemplate DataType="{x:Type dataContext:AlbumArtInfoViewModel}">
         <views:AlbumArtInfoUI />
+    </DataTemplate>
+
+    <!--  Control Panel 뷰  -->
+    <DataTemplate DataType="{x:Type dataContext:ControlPanelViewModel}">
+        <views:ControlPanelUI />
     </DataTemplate>
 </ResourceDictionary>

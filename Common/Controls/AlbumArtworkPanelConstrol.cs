@@ -8,17 +8,17 @@ public class AlbumArtworkPanelConstrol : Control
 {
     public AlbumArtworkPanelConstrol()
     {
-        DefaultStyleKey = typeof(AlbumArtworkPanelConstrol);
+        this.DefaultStyleKey = typeof(AlbumArtworkPanelConstrol);
     }
 
     public ImageSource? AlbumArtImage
     {
-        get { return GetValue(AlbumArtImageProperty) as ImageSource; }
-        set { SetValue(AlbumArtImageProperty, value); }
+        get { return base.GetValue(AlbumArtImageProperty) as ImageSource; }
+        set { base.SetValue(AlbumArtImageProperty, value); }
     }
 
     public static readonly DependencyProperty AlbumArtImageProperty =
-        DependencyProperty.Register("AlbumArtImage", typeof(ImageSource), typeof(AlbumArtworkPanelConstrol));
+      DependencyProperty.Register("AlbumArtImage", typeof(ImageSource), typeof(AlbumArtworkPanelConstrol));
 
     public override void OnApplyTemplate()
     {

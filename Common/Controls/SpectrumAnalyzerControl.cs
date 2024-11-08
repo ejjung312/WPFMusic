@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Automation.Text;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows.Threading;

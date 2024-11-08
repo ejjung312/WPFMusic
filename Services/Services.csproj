@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="LogHelper">
+      <HintPath>..\Lib\LogHelper\LogHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
