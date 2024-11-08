@@ -212,15 +212,15 @@
         </Grid.RowDefinitions>
 
         <!--  상단 타이틀바  -->
-        <Grid x:Name="xTitleGrid" MouseLeftButtonDown="xTitleGrid_MouseLeftButtonDown">
-            <Border
-                Background="{DynamicResource MusicAlbumcoverAvgColor}"
-                BorderThickness="0"
-                CornerRadius="0 0 0 0" />
+        <Grid x:Name="xTitleGrid" MouseLeftButtonDown="TitleGrid_MouseLeftButtonDown">
 
+            <Border
+                Background="{DynamicResource MusicAlbumCoverAvgColor}"
+                BorderThickness="0"
+                CornerRadius="0,0,0,0" />
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
@@ -289,7 +289,7 @@
                         Margin="0,0,5,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Click="xMinimizeToggleButton_Click"
+                        Click="MinimizeToggleButton_Click"
                         IsTabStop="False"
                         Style="{DynamicResource sButton_Minimize}" />
                     <ToggleButton
@@ -299,7 +299,7 @@
                         Margin="0,0,5,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Click="xMaximizeToggleButton_Click"
+                        Click="MaximizeToggleButton_Click"
                         IsChecked="{Binding ElementName=xShellWindow, Path=WindowState, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Normal}"
                         IsTabStop="False"
                         Style="{DynamicResource sToggleButton_Restore}" />
@@ -310,11 +310,19 @@
                         Margin="0,0,5,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top"
-                        Click="xCloseButton_Click"
+                        Click="CloseButton_Click"
                         IsTabStop="False"
                         Style="{DynamicResource sButton_Close}" />
                 </StackPanel>
             </Grid>
+        </Grid>
+        <!--  상단 타이틀바 END  -->
+
+        <Grid Grid.Row="1" MouseMove="Grid_MouseMove">
+            <ContentControl
+                x:Name="xMainContent"
+                Margin="0,0,0,0"
+                Content="{Binding CurrentDataContext}" />
         </Grid>
     </Grid>
 </Window>

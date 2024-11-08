@@ -6,6 +6,10 @@
     xmlns:local="clr-namespace:MainEntry">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MainEntry;component/Mappings.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
             <SolidColorBrush x:Key="MusicAlbumCoverAvgColor" Color="#ff455668" />
 
             <Style x:Key="ButtonFocusVisual">
@@ -34,6 +38,25 @@
             </LinearGradientBrush>
 
             <SolidColorBrush x:Key="ButtonNormalBorder" Color="#ff707070" />
+
+            <!--  TextBlock Font Style  -->
+            <Style x:Key="xNanumSquareFont" TargetType="{x:Type TextBlock}">
+                <Setter Property="TextTrimming" Value="None" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="FontFamily" Value="/MainEntry;component/Fonts/#나눔스퀘어" />
+            </Style>
+            <Style x:Key="xNanumSquare_BFont" TargetType="{x:Type TextBlock}">
+                <Setter Property="TextTrimming" Value="None" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="FontFamily" Value="/MainEntry;component/Fonts/#나눔스퀘어 Bold" />
+            </Style>
+            <Style x:Key="xNanumSquare_EBFont" TargetType="{x:Type TextBlock}">
+                <Setter Property="TextTrimming" Value="None" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="FontWeight" Value="ExtraBold" />
+                <Setter Property="FontFamily" Value="/MainEntry;component/Fonts/#나눔스퀘어 ExtraBold" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

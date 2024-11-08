@@ -26,6 +26,8 @@ public class Bootstrapper
         services.AddTransient<ShellViewModel>();
         services.AddTransient<MainViewModel>();
 
+        services.AddTransient<AlbumArtInfoViewModel>();
+
         return services.BuildServiceProvider();
     }
 }
